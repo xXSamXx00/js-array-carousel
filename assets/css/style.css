@@ -1,0 +1,31 @@
+.container {
+    width: 500px;
+    margin: 10rem auto;
+    display: flex;
+}
+
+.hero_image {
+    position: relative;
+}
+
+.side_images {
+    background-color: red;
+    height: 100px;
+    width: 50px;
+}
+
+.title,
+.text {
+    position: absolute;
+    color: white;
+}
+
+.title {
+    bottom: 40px;
+    right: 20px;
+}
+
+.text {
+    bottom: 0;
+    right: 0;
+}
