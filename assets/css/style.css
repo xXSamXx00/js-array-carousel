@@ -1,3 +1,9 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 .container {
     width: 1024px;
     margin: 12rem auto;
@@ -24,6 +30,7 @@
     height: calc(430px / 5);
     width: 100%;
     display: block;
+    filter: brightness(0.5);
 }
 
 button {
@@ -40,12 +47,12 @@ button {
 
 button i {
     text-align: center;
-    line-height: 30px;
     font-size: 25px;
 }
 
 #slide_up {
     top: 10px;
+    z-index: 1;
 }
 
 #slide_down {
@@ -67,4 +74,9 @@ button i {
     bottom: 20px;
     right: 20px;
     font-size: 15px;
+}
+
+.select_image img {
+    border: 3px solid rgb(200, 200, 200);
+    filter: none;
 }
