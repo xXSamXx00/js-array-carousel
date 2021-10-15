@@ -5,14 +5,22 @@ const texts = ['Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et tem
 // Prendo da Html gli elementi
 const buttonSlideUp = document.getElementById("slide_up")
 const buttonSlideDown = document.getElementById("slide_down")
+const heroImage = document.querySelector(".hero_image>img")
 // 
+for (let i = 0; i < items.length; i++) {
+    const item = items[i];
+    const title = titles[i];
+    const text = texts[i];
+}
+
+let plusOne = 0
+heroImage.setAttribute("src", `./${items[0]}`)
+
 buttonSlideUp.addEventListener("click", function() {
-    const heroImage = document.querySelector(".hero_image>img")
-    for (let i = 0; i < items.length; i++) {
-        const elements = items[i];
-        heroImage.setAttribute("src", `./${elements}`)
-        console.log(heroImage);
-    }
+    plusOne = 1
+    heroImage.setAttribute("src", `./${items[plusOne]}`)
+    console.log(plusOne);
+
 })
 
 buttonSlideDown.addEventListener("click", function() {
