@@ -6,23 +6,23 @@ const texts = ['Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et tem
 const buttonSlideUp = document.getElementById("slide_up")
 const buttonSlideDown = document.getElementById("slide_down")
 const heroImage = document.querySelector(".hero_image>img")
+const sweden = document.getElementById("svezia")
+sweden
+const itemElement = document.querySelector(".items")
 // 
 for (let i = 0; i < items.length; i++) {
-    const item = items[i];
-    const title = titles[i];
-    const text = texts[i];
+    const item = `<img src="${items[i]}">`;
+    itemElement.innerHTML += item
 }
 
 let plusOne = 0
 heroImage.setAttribute("src", `./${items[0]}`)
 
 buttonSlideUp.addEventListener("click", function() {
-    plusOne = 1
-    heroImage.setAttribute("src", `./${items[plusOne]}`)
-    console.log(plusOne);
+    heroImage.setAttribute("src", `./${items[++plusOne]}`) 
 
 })
 
 buttonSlideDown.addEventListener("click", function() {
-
+    heroImage.setAttribute("src", `./${items[--plusOne]}`)
 })
