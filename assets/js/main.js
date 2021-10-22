@@ -1,51 +1,92 @@
-// Inserisco tutti gli array
-const items = ['img/01.jpg', 'img/02.jpg', 'img/03.jpg', 'img/04.jpg', 'img/05.jpg'];
-const titles = ['Svezia', 'Svizzera', 'Gran Bretagna', 'Germania', 'Paradise']
-const texts = ['Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam, cumque provident totam omnis, magnam dolores dolorum corporis.', 'Lorem ipsum', 'Lorem ipsum, dolor sit amet consectetur adipisicing elit.', 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam,', 'Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam']
-// Prendo da Html gli elementi
-const buttonSlideUp = document.getElementById("slide_up")
-const buttonSlideDown = document.getElementById("slide_down")
-const heroImage = document.querySelector(".hero_image>img")
-const sweden = document.getElementById("svezia")
-sweden
-const itemElement = document.querySelector(".items")
-const titleElement = document.getElementById("title")
-const textElement = document.getElementById("text")
-// 
-for (let i = 0; i < items.length; i++) {
-    const item = `<img src="${items[i]}">`;
-    itemElement.innerHTML += item
-}
+const items = [
+    'img/01.jpg',
+    'img/02.jpg',
+    'img/03.jpg',
+    'img/04.jpg',
+    'img/05.jpg'
+  ];
+  
+  
+  const title = [
+    'Svezia',
+    'Svizzera',
+    'Gran Bretagna',
+    'Germania',
+    'Paradise'
+  ]
+  
+const text = [
+    'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam, cumque provident totam omnis, magnam dolores dolorum corporis.',
+    'Lorem ipsum',
+    'Lorem ipsum, dolor sit amet consectetur adipisicing elit.',
+    'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam,',
+    'Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam,'
+]
 
-document.querySelectorAll(".items")[0].classList.add("select_image")
-document
+  // DOM
+  const previewElement = document.querySelector('.preview');
+const thumbsElement = document.querySelector('.thumbs');
+const prevElement = document.querySelector('.prev');
+const nextElement = document.querySelector('.next');
+  
+  
+  // Inizializzazione variabili
+  let activeItem = 0
+  console.log(items[activeItem], title[activeItem], text[activeItem]);
+  
+  for (let index = 0; index < items.length; index++) {
+  
+    const image_path = items[index];
 
-let plusOne = 0
-heroImage.setAttribute("src", `./${items[0]}`)
+    const element = `
+    <div class="preview__item">
+      <img src="${image_path}" alt="">
+      <div class="text">
+        <h2>${title[index]}</h2>
+        <p>${text[index]}</p>
+      </div>
+    </div>`
+  
+    previewElement.insertAdjacentHTML('beforeend', element)
+  
+    const thumbImage = `
+    <img class="thumb_image" src="${image_path}">`
+  
+    thumbsElement.insertAdjacentHTML('beforeend', thumbImage)
+  
+  }
+  
+  document.getElementsByClassName('thumb_image')[0].classList.add('activeThumb')
+  document.getElementsByClassName('preview__item')[activeItem].classList.add('active')
 
-
-buttonSlideUp.addEventListener("click", function() {
-    if (plusOne == 0) {
-        plusOne = items.length - 1
+  nextElement.addEventListener('click', function () {
+  
+  
+    if (activeItem == items.length - 1) {
+      activeItem = 0
     } else {
-        plusOne = plusOne - 1
+      activeItem = activeItem + 1
     }
-
-    heroImage.setAttribute("src", `./${items[plusOne]}`)
-    
-    document.querySelector(".items.select_image").classList.remove("select_image")
-    document.querySelectorAll(".items")[plusOne].classList.add("select_image")
-})
-
-buttonSlideDown.addEventListener("click", function() {
-    if (plusOne == items.length - 1) {
-        plusOne = 0
+  
+    document.querySelector('.preview__item.active').classList.remove('active')
+    document.getElementsByClassName('preview__item')[activeItem].classList.add('active')
+  
+    document.querySelector('.thumb_image.activeThumb').classList.remove('activeThumb')
+    document.getElementsByClassName('thumb_image')[activeItem].classList.add('activeThumb')
+  })
+  
+  prevElement.addEventListener('click', function () {
+    console.log('Cliccato su prev');
+    if (activeItem == 0) {
+      activeItem = items.length - 1
     } else {
-        plusOne = plusOne + 1
+      activeItem = activeItem - 1
     }
-    
-    heroImage.setAttribute("src", `./${items[plusOne]}`)
+    document.querySelector('.preview__item.active').classList.remove('active')
+    document.getElementsByClassName('preview__item')[activeItem].classList.add('active')
 
-
-
-})
+    document.querySelector('.thumb_image.activeThumb').classList.remove('activeThumb')
+    document.getElementsByClassName('thumb_image')[activeItem].classList.add('activeThumb')
+  
+  
+  })
