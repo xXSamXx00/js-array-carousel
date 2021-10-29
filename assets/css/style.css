@@ -7,12 +7,12 @@
 .container {
     width: 1140px;
     margin: 2rem auto;
-    display:  flex;
+    display: flex;
     height: 400px;
 }
 
 .activeThumb {
-    border:  3px solid lightgray;
+    border: 3px solid lightgray;
     filter: brightness(1)!important;
 }
 
@@ -70,11 +70,17 @@ img.thumb_image {
     z-index: 1;
 }
 
-.navigator .prev, .navigator .next {
+.navigator .prev,
+.navigator .next {
     background-color: white;
     height: 30px;
     width: 30px;
     text-align: center;
     line-height: 30px;
     border-radius: 50%;
+}
+
+.prev,
+.next {
+    cursor: pointer;
 }
