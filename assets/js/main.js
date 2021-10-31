@@ -32,7 +32,6 @@ const nextElement = document.querySelector('.next');
 
 // Inizializzazione variabili
 let activeItem = 0
-console.log(items[activeItem], title[activeItem], text[activeItem]);
 
 for (let index = 0; index < items.length; index++) {
     const image_path = items[index];
@@ -72,7 +71,6 @@ nextElement.addEventListener('click', function() {
 })
 
 prevElement.addEventListener('click', function() {
-    console.log('Cliccato su prev');
     if (activeItem == 0) {
         activeItem = items.length - 1
     } else {
